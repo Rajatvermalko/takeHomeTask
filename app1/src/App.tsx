@@ -12,7 +12,6 @@ const App: React.FC = () => {
                 <Routes>
                     <Route path="/" element={<Dashboard />} />
                     <Route path="/list" element={<List />} />
-                    {/* Redirect any other paths to the dashboard */}
                     <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
             </div>
@@ -28,4 +27,4 @@ const StandaloneApp: React.FC = () => {
     );
 };
 
-export default App;
+export { StandaloneApp as default };

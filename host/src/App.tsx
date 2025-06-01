@@ -1,13 +1,19 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import SideMenu from './components/SideMenu';
 import './styles/App.scss';
 
-// Lazy load the remote applications
-const App1 = lazy(() => import('app1/App'));
-const App2 = lazy(() => import('app2/App'));
+const App1 = lazy(() => import('app1/App').catch(() => {
+    console.warn('App1 is not available. Make sure it is running on port 3001.');
+    return { default: () => <div className="error-message">App1 is not available. Please start it with npm run start:app1</div> };
+}));
+
+const App2 = lazy(() => import('app2/App').catch(() => {
+    console.warn('App2 is not available. Make sure it is running on port 3002.');
+    return { default: () => <div className="error-message">App2 is not available. Please start it with npm run start:app2</div> };
+}));
 
 const App: React.FC = () => {
     return (

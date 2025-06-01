@@ -1,0 +1,27 @@
+{
+    "name": "micro-frontend-demo",
+    "version": "1.0.0",
+    "private": true,
+    "workspaces": [
+        "host",
+        "app1",
+        "app2"
+    ],
+    "scripts": {
+        "start": "concurrently \"npm run start:host\" \"npm run start:app1\" \"npm run start:app2\"",
+        "start:host": "cd host && npm start",
+        "start:app1": "cd app1 && npm start",
+        "start:app2": "cd app2 && npm start",
+        "build": "npm run build:host && npm run build:app1 && npm run build:app2",
+        "build:host": "cd host && npm run build",
+        "build:app1": "cd app1 && npm run build",
+        "build:app2": "cd app2 && npm run build",
+        "test": "npm run test:host && npm run test:app1 && npm run test:app2",
+        "test:host": "cd host && npm test",
+        "test:app1": "cd app1 && npm test",
+        "test:app2": "cd app2 && npm test"
+    },
+    "devDependencies": {
+        "concurrently": "^8.2.0"
+    }
+}

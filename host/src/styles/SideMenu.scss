@@ -1,0 +1,35 @@
+.side-menu {
+  background-color: #f8f9fa;
+  width: 200px;
+  padding: 1rem 0;
+  height: calc(100vh - 130px);
+  border-right: 1px solid #e9ecef;
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      padding: 0.5rem 1rem;
+
+      a {
+        display: block;
+        color: #495057;
+        text-decoration: none;
+        padding: 0.5rem;
+        border-radius: 4px;
+        transition: background-color 0.2s;
+
+        &:hover {
+          background-color: #e9ecef;
+        }
+
+        &.active {
+          background-color: #007bff;
+          color: white;
+        }
+      }
+    }
+  }
+}

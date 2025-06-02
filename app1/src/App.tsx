@@ -19,6 +19,7 @@ const App: React.FC = () => {
     );
 };
 
+// StandaloneApp is used when the app is run independently
 const StandaloneApp: React.FC = () => {
     return (
         <BrowserRouter>
@@ -27,4 +28,8 @@ const StandaloneApp: React.FC = () => {
     );
 };
 
-export { StandaloneApp as default };
+// Check if we're running in standalone mode or as a micro-frontend
+const isStandalone = !window.location.pathname.includes('/app1');
+
+// Export the appropriate component based on the context
+export default isStandalone ? StandaloneApp : App;

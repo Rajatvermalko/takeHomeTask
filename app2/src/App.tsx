@@ -25,4 +25,8 @@ const StandaloneApp: React.FC = () => {
     );
 };
 
-export default App;
+// Check if we're running in standalone mode or as a micro-frontend
+const isStandalone = !window.location.pathname.includes('/app2');
+
+// Export the appropriate component based on the context
+export default isStandalone ? StandaloneApp : App;
